@@ -1,22 +1,24 @@
 from tkinter import *
+from tkinter import ttk
 from tkinter import messagebox
-import os
+from PIL import ImageTk,Image
+import os,glob
 import mysql.connector
 from mysql.connector import Error
-py=sys.executable
 
-
+ 
+ 
 #creating window
 class Lib(Tk):
     def __init__(self):
         super().__init__()
         self.a = StringVar()
         self.b = StringVar()
-        self.maxsize(900, 500)
-        self.minsize(900, 500)
-        self.configure(bg="gray")
+        self.maxsize(1200, 700)
+        self.minsize(1200, 700)
+        self.configure(bg="light blue")
         self.title("LIBRARY MANAGEMENT SYSTEM")
-
+ 
 
 #verifying input
         def chex():
@@ -49,19 +51,19 @@ class Lib(Tk):
         def check():
 
 
-                    self.label = Label(self, text="LOGIN", bg = 'brown' , fg = 'black', font=("courier-new", 24,'bold'))
-                    self.label.place(x=400, y=90)
-                    self.label1 = Label(self, text="User-Id :" , bg = 'brown' , fg = 'black', font=("courier-new", 18, 'bold'))
-                    self.label1.place(x=200, y=180)
+                    self.label = Label(self, text="LOGIN" , fg = 'black', font=("times new roman", 20,'bold'))
+                    self.label.place(x=550, y=90)
+                    self.label1 = Label(self, text="User-Name :" , fg = 'black', font=("times new roman", 30, 'bold'))
+                    self.label1.place(x=270, y=180)
                     self.user_text = Entry(self, textvariable=self.a, width=45)
-                    self.user_text.place(x=350, y=190, height='30')
-                    self.label2 = Label(self, text="Password :" , bg = 'brown' , fg = 'black', font=("courier-new", 18, 'bold'))
-                    self.label2.place(x=200, y=250)
+                    self.user_text.place(x=600, y=180, height='50')
+                    self.label2 = Label(self, text="Password :"  , fg = 'black', font=("times new roman", 30, 'bold'))
+                    self.label2.place(x=270, y=280)
                     self.pass_text = Entry(self, show='*', textvariable=self.b, width=45)
-                    self.pass_text.place(x=350, y=255, height='30')
-                    self.butt = Button(self, text="Login",bg ='light blue', font=10, width=8, command=chex).place(x=400, y=350)
-                    self.label3 = Label(self, text="LIBRARY MANAGEMENT SYSTEM", bg='brown', fg='black', font=("courier-new", 24, 'bold'))
-                    self.label3.place(x=200, y=30)
+                    self.pass_text.place(x=600, y=280, height='50')
+                    self.butt = Button(self, text="Login",bg ='red', font=30, width=20, command=chex).place(x=500, y=400)
+                    self.label3 = Label(self, text="LIBRARY MANAGEMENT SYSTEM", fg='black', font=("times new roman", 30, 'bold'))
+                    self.label3.place(x=300, y=30)
 
 
         check()

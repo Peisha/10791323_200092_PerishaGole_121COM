@@ -15,7 +15,7 @@ class Add(Tk):
         self.maxsize(500,417)
         self.minsize(500,417)
         self.title('Add Student')
-        self.canvas = Canvas(width=500, height=417, bg='gray')
+        self.canvas = Canvas(width=500, height=417, bg='light blue')
         self.canvas.pack()
         n = StringVar()
         p = StringVar()
@@ -53,12 +53,12 @@ class Add(Tk):
                     messagebox.showerror("Error","Something goes wrong")
 
         # label and input box
-        Label(self, text='Student Details',bg='gray', fg='white', font=('Courier new', 25, 'bold')).pack()
-        Label(self, text='Name:',bg='gray', font=('Courier new', 10, 'bold')).place(x=70, y=82)
+        Label(self, text='Student Details', fg='white', font=('Times new Roman', 25, 'bold')).pack()
+        Label(self, text='Name:', font=('Times new Roman', 10, 'bold')).place(x=70, y=82)
         Entry(self, textvariable=n, width=30).place(x=200, y=84)
-        Label(self, text='Phone Number:',bg='gray', font=('Courier new', 10, 'bold')).place(x=70, y=130)
+        Label(self, text='Phone Number:', font=('Times new Roman', 10, 'bold')).place(x=70, y=130)
         Entry(self, textvariable=p, width=30).place(x=200, y=132)
-        Label(self, text='Address:',bg='gray', font=('Courier new', 10, 'bold')).place(x=70, y=180)
+        Label(self, text='Address:', font=('Times new Roman', 10, 'bold')).place(x=70, y=180)
         Entry(self, textvariable=a, width=30).place(x=200, y=182)
         Button(self, text="Submit",width = 15,command=asi).place(x=230, y=220)
 

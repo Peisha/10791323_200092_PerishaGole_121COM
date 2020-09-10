@@ -10,7 +10,7 @@ class Rem(Tk):
         self.maxsize(400, 200)
         self.minsize(400, 200)
         self.title("Remove User")
-        self.canvas = Canvas(width=1366, height=768, bg='gray')
+        self.canvas = Canvas(width=1366, height=768, bg='light blue')
         self.canvas.pack()
         a = StringVar()
         def ent():
@@ -33,9 +33,9 @@ class Rem(Tk):
                         a.set("")
                     except:
                         messagebox.showerror("Error","Something goes wrong")
-        Label(self, text = "Enter User Id: ",bg='gray',fg='black',font=('Courier new', 15, 'bold')).place(x = 5,y = 40)
+        Label(self, text = "Enter User Id: ",fg='black',font=('times new roman', 15, 'bold')).place(x = 5,y = 40)
         Entry(self,textvariable = a,width = 37).place(x = 160,y = 44)
-        Button(self, text='Remove', width=15, font=('arial', 10),command = ent).place(x=200, y = 90)
+        Button(self, text='Remove', width=15, font=('arial', 10),command = ent).place(x=150, y = 90)
 
 
 

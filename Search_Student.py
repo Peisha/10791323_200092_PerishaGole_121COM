@@ -13,11 +13,11 @@ class Search(Tk):
         g = StringVar()
         self.title("Search Student")
         self.maxsize(800,520)
-        self.canvas = Canvas(width=1366, height=768, bg='gray')
+        self.canvas = Canvas(width=1366, height=768, bg='light blue')
         self.canvas.pack()
         self.iconbitmap(r'libico.ico')
-        l1=Label(self,text="Search Student",bg='gray', font=("Courier new",20,'bold')).place(x=290,y=40)
-        l = Label(self, text="Search By",bg='gray', font=("Courier new", 15, 'bold')).place(x=180, y=100)
+        l1=Label(self,text="Search Student", font=("Times new Roman",20,'bold')).place(x=290,y=40)
+        l = Label(self, text="Search By", font=("Times new Roman", 15, 'bold')).place(x=180, y=100)
 
 
         def insert(data):
@@ -65,13 +65,13 @@ class Search(Tk):
                     messagebox.showerror("Error", "Something goes wrong")
 
 
-        self.b= Button(self,text="Find",width=8,font=("Courier new",8,'bold'),command= ge )
-        self.b.place(x=400,y=170)
+        self.b= Button(self,text="Find",width=8,font=("Times new Roman",15,'bold'),command= ge )
+        self.b.place(x=600,y=120)
         self.combo=ttk.Combobox(self,textvariable=g,values=["Name","ID"],width=40,state="readonly")
         self.combo.place(x = 310, y = 105)
         self.entry = Entry(self,textvariable=f,width=43)
         self.entry.place(x=310,y=145)
-        self.la = Label(self, text="Enter",bg = 'gray', font=("Courier new", 15, 'bold')).place(x=180, y=140)
+        self.la = Label(self, text="Enter", font=("Times new Roman", 15, 'bold')).place(x=180, y=140)
 
         def handle(event):
             if self.listTree.identify_region(event.x,event.y) == "separator":

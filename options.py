@@ -3,20 +3,40 @@ from tkinter import messagebox
 import os
 import sys
 from tkinter import ttk
-
+from PIL import ImageTk, Image
 import mysql.connector
-from mysql.connector import Error
-
+from mysql.connector import Errorls
 py=sys.executable
 
 #creating window
 class MainWin(Tk):
+    def resize_image(self,event):
+        self.new_width = event.width
+        self.new_height = event.height
+
+        self.image = self.copy_of_image.resize((self.new_width,self.new_height))
+        self.photo = ImageTk.PhotoImage(self.image)
+
+        self.label.config(image=self.photo)
+        self.label.image = self.photo  # avoid garbage collection
     def __init__(self):
+      
         super().__init__()
-        self.iconbitmap(r'libico.ico')
+        # Adding a background image
+        self.iconbitmap('library.jpg')
         self.configure(bg='gray')
-        self.canvas = Canvas(width=1366, height=768, bg='gray')
-        self.canvas.pack()
+        self.canvas = Canvas(width=1366, relief='raised', height=768, bg="light blue")
+        self.canvas.pack(expand=True, fill=BOTH)
+        self.frame = Frame(self.canvas, relief='raised', borderwidth=2)
+        self.frame.pack(fill=BOTH, expand=YES)
+        self.frame.pack_propagate(False)
+
+        self.copy_of_image = Image.open("library2.jpg")
+        self.photo = ImageTk.PhotoImage(  self.copy_of_image)
+
+        self.label = Label(  self.frame, image=  self.photo)
+        self.label.place(x=0, y=0, relwidth=1, relheight=1)
+        self.label.bind('<Configure>',   self.resize_image)
         self.maxsize(1320, 768)
         self.minsize(1320,768)
         self.state('zoomed')
@@ -24,6 +44,7 @@ class MainWin(Tk):
         self.a = StringVar()
         self.b = StringVar()
         self.mymenu = Menu(self)
+      
 #calling scripts
         def a_s():
             os.system('%s %s' % (py, 'Add_Student.py'))
@@ -143,6 +164,7 @@ class MainWin(Tk):
              except Error:
                 messagebox.showerror("Error", "Something Goes Wrong")
 
+     
         def check():
             try:
                 conn = mysql.connector.connect(host='localhost',
@@ -160,27 +182,28 @@ class MainWin(Tk):
                         os.system('%s %s' % (py, 'Reg.py'))
                 else:
                     #label and input box
-                    self.label3 = Label(self, text='LIBRARY MANAGEMENT SYSTEM',fg='black',bg="gray" ,font=('Courier new', 30, 'bold'))
+                    self.label3 = Label(self, text='LIBRARY MANAGEMENT SYSTEM',fg='black' ,font=('time new roman', 35, 'bold'))
                     self.label3.place(x=350, y=22)
-                    self.label4 = Label(self, text="ENTER STUDENT",bg="gray", font=('Courier new', 18, 'bold'))
+                    self.label4 = Label(self, text="ENTER STUDENT", font=('time new roman', 15, 'bold'))
                     self.label4.place(x=130, y=107)
                     self.studid = Entry(self, textvariable=self.a, width=90)
                     self.studid.place(x=405, y=110)
-                    self.srt = Button(self, text='Search', width=15, font=('arial', 10),command = ser).place(x=1000, y=106)
-                    self.label5 = Label(self, text="ENTER THE BOOK ID",bg="gray", font=('Courier new', 18, 'bold'))
+                    self.srt = Button(self, text='SEARCH', width=15, font=('time new roman', 10),command = ser).place(x=500, y=220)
+                    self.label5 = Label(self, text="ENTER THE BOOK ID", font=('time new roman', 15, 'bold'))
                     self.label5.place(x=75, y=150)
                     self.bookid = Entry(self, textvariable=self.b, width=90)
                     self.bookid.place(x=405, y=160)
-                    self.brt = Button(self, text='Find', width=15, font=('arial', 10),command = ent).place(x=1000, y=150)
-                    self.label6 = Label(self, text="INFORMATION DETAILS",bg="gray",  font=('Courier new', 15, 'underline', 'bold'))
-                    self.label6.place(x=560, y=300)
-                    self.button = Button(self, text='Search Student', width=25, font=('Courier new', 10), command=sest).place(x=240,y=250)
-                    self.button = Button(self, text='Search Book', width=25, font=('Courier new', 10), command=sea).place(x=520,y=250)
-                    self.brt = Button(self, text="Issue Book", width=15, font=('Courier new', 10), command=ib).place(x=800, y=250)
-                    self.brt = Button(self, text="Return Book", width=15, font=('Courier new', 10), command=ret).place(x=1000, y=250)
-                    self.brt = Button(self, text="LOGOUT", width=15,bg="red", font=('Courier new', 10), command=log).place(x=1150, y=105)
+                    self.brt = Button(self, text='FIND', width=15, font=('time new roman', 10),command = ent).place(x=700, y=220)
+                    self.label6 = Label(self, text="DATA DETAILS",  font=('time new roman', 15, 'underline', 'bold'))
+                    self.label6.place(x=590, y=300)
+                    self.button = Button(self, text='Search Student', width=25, font=('time new roman', 10), command=sest).place(x=240,y=730)
+                    self.button = Button(self, text='Search Book', width=25, font=('time new roman', 10), command=sea).place(x=490,y=730)
+                    self.brt = Button(self, text="Issue Book", width=15, font=('time new roman', 10), command=ib).place(x=740, y=730)
+                    self.brt = Button(self, text="Return Book", width=15, font=('time new roman', 10), command=ret).place(x=920, y=730)
+                    self.brt = Button(self, text="LOGOUT", width=15,bg="red", font=('time new roman', 10), command=log).place(x=1000, y=130)
             except Error:
                 messagebox.showerror("Error", "Something Goes Wrong")
         check()
 
+     
 MainWin().mainloop()
