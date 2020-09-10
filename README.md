@@ -23,6 +23,3 @@ A simple and functional Library Management System Implemented in python 3 (Tkint
 A student can issue a book for 03 days.After that the student have to renew the book, If the student didn't renew the book within the return date the student have to pay fine @ Rs 1/day.A student can take a maximum of 3 books......
 
 
-# 200092_PerihaGole_STW121COM
-# 200092_PerishaGole_121COM
-# 200092_PerishaGole_121COM
