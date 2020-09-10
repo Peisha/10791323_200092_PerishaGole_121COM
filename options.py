@@ -5,7 +5,7 @@ import sys
 from tkinter import ttk
 from PIL import ImageTk, Image
 import mysql.connector
-from mysql.connector import Errorls
+from mysql.connector import Error
 py=sys.executable
 
 #creating window
